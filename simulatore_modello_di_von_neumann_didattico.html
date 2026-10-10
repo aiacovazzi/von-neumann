@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulatore Modello di Von Neumann - Didattica Liceo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500;700&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+*,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/*! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com*/*,:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:""}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;-o-tab-size:4;tab-size:4;font-family:Outfit,sans-serif;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:Fira Code,monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0}fieldset,legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{opacity:1;color:#9ca3af}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.container{width:100%}@media (min-width:640px){.container{max-width:640px}}@media (min-width:768px){.container{max-width:768px}}@media (min-width:1024px){.container{max-width:1024px}}@media (min-width:1280px){.container{max-width:1280px}}@media (min-width:1536px){.container{max-width:1536px}}.pointer-events-none{pointer-events:none}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.sticky{position:sticky}.inset-0{inset:0}.top-0{top:0}.z-10{z-index:10}.z-20{z-index:20}.z-40{z-index:40}.z-50{z-index:50}.mx-auto{margin-left:auto;margin-right:auto}.my-1{margin-top:.25rem;margin-bottom:.25rem}.my-2{margin-top:.5rem;margin-bottom:.5rem}.my-auto{margin-top:auto;margin-bottom:auto}.mb-1{margin-bottom:.25rem}.mb-1\.5{margin-bottom:.375rem}.mb-2{margin-bottom:.5rem}.mb-2\.5{margin-bottom:.625rem}.mb-3{margin-bottom:.75rem}.mb-4{margin-bottom:1rem}.mt-1{margin-top:.25rem}.mt-2{margin-top:.5rem}.mt-3{margin-top:.75rem}.mt-4{margin-top:1rem}.mt-5{margin-top:1.25rem}.block{display:block}.flex{display:flex}.grid{display:grid}.hidden{display:none}.h-12{height:3rem}.h-3{height:.75rem}.h-8{height:2rem}.h-full{height:100%}.max-h-24{max-height:6rem}.max-h-\[90vh\]{max-height:90vh}.min-h-\[105px\]{min-height:105px}.min-h-\[600px\]{min-height:600px}.min-h-screen{min-height:100vh}.w-12{width:3rem}.w-3{width:.75rem}.w-8{width:2rem}.w-full{width:100%}.max-w-2xl{max-width:42rem}.max-w-7xl{max-width:80rem}.max-w-\[100px\]{max-width:100px}.flex-1{flex:1 1 0%}.shrink-0{flex-shrink:0}.scale-125{--tw-scale-x:1.25;--tw-scale-y:1.25}.scale-125,.transform{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}@keyframes pulse{50%{opacity:.5}}.animate-pulse{animation:pulse 2s cubic-bezier(.4,0,.6,1) infinite}.cursor-pointer{cursor:pointer}.resize{resize:both}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}.grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-start{align-items:flex-start}.items-center{align-items:center}.items-stretch{align-items:stretch}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:.25rem}.gap-1\.5{gap:.375rem}.gap-2{gap:.5rem}.gap-2\.5{gap:.625rem}.gap-3{gap:.75rem}.gap-3\.5{gap:.875rem}.gap-4{gap:1rem}.gap-5{gap:1.25rem}.space-y-2>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(.5rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(.5rem*var(--tw-space-y-reverse))}.space-y-3>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(.75rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(.75rem*var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.overflow-y-auto{overflow-y:auto}.truncate{overflow:hidden;text-overflow:ellipsis}.truncate,.whitespace-nowrap{white-space:nowrap}.rounded-2xl{border-radius:1rem}.rounded-3xl{border-radius:1.5rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:.5rem}.rounded-xl{border-radius:.75rem}.border{border-width:1px}.border-2{border-width:2px}.border-b-2{border-bottom-width:2px}.border-t{border-top-width:1px}.border-amber-100{--tw-border-opacity:1;border-color:rgb(254 243 199/var(--tw-border-opacity,1))}.border-amber-300{--tw-border-opacity:1;border-color:rgb(252 211 77/var(--tw-border-opacity,1))}.border-emerald-200{--tw-border-opacity:1;border-color:rgb(167 243 208/var(--tw-border-opacity,1))}.border-emerald-200\/60{border-color:rgba(167,243,208,.6)}.border-emerald-300{--tw-border-opacity:1;border-color:rgb(110 231 183/var(--tw-border-opacity,1))}.border-indigo-100{--tw-border-opacity:1;border-color:rgb(224 231 255/var(--tw-border-opacity,1))}.border-indigo-200{--tw-border-opacity:1;border-color:rgb(199 210 254/var(--tw-border-opacity,1))}.border-indigo-50{--tw-border-opacity:1;border-color:rgb(238 242 255/var(--tw-border-opacity,1))}.border-pink-200{--tw-border-opacity:1;border-color:rgb(251 207 232/var(--tw-border-opacity,1))}.border-pink-300{--tw-border-opacity:1;border-color:rgb(249 168 212/var(--tw-border-opacity,1))}.border-pink-400{--tw-border-opacity:1;border-color:rgb(244 114 182/var(--tw-border-opacity,1))}.border-purple-100{--tw-border-opacity:1;border-color:rgb(243 232 255/var(--tw-border-opacity,1))}.border-purple-200{--tw-border-opacity:1;border-color:rgb(233 213 255/var(--tw-border-opacity,1))}.border-purple-300{--tw-border-opacity:1;border-color:rgb(216 180 254/var(--tw-border-opacity,1))}.border-rose-200{--tw-border-opacity:1;border-color:rgb(254 205 211/var(--tw-border-opacity,1))}.border-sky-200{--tw-border-opacity:1;border-color:rgb(186 230 253/var(--tw-border-opacity,1))}.border-sky-200\/60{border-color:rgba(186,230,253,.6)}.border-sky-300{--tw-border-opacity:1;border-color:rgb(125 211 252/var(--tw-border-opacity,1))}.border-slate-100{--tw-border-opacity:1;border-color:rgb(241 245 249/var(--tw-border-opacity,1))}.border-slate-200{--tw-border-opacity:1;border-color:rgb(226 232 240/var(--tw-border-opacity,1))}.border-teal-200{--tw-border-opacity:1;border-color:rgb(153 246 228/var(--tw-border-opacity,1))}.border-teal-300{--tw-border-opacity:1;border-color:rgb(94 234 212/var(--tw-border-opacity,1))}.border-teal-400{--tw-border-opacity:1;border-color:rgb(45 212 191/var(--tw-border-opacity,1))}.bg-amber-100{--tw-bg-opacity:1;background-color:rgb(254 243 199/var(--tw-bg-opacity,1))}.bg-amber-50\/50{background-color:rgba(255,251,235,.5)}.bg-amber-500{--tw-bg-opacity:1;background-color:rgb(245 158 11/var(--tw-bg-opacity,1))}.bg-emerald-100\/80{background-color:rgba(209,250,229,.8)}.bg-emerald-50{--tw-bg-opacity:1;background-color:rgb(236 253 245/var(--tw-bg-opacity,1))}.bg-emerald-500{--tw-bg-opacity:1;background-color:rgb(16 185 129/var(--tw-bg-opacity,1))}.bg-indigo-50{--tw-bg-opacity:1;background-color:rgb(238 242 255/var(--tw-bg-opacity,1))}.bg-indigo-500{--tw-bg-opacity:1;background-color:rgb(99 102 241/var(--tw-bg-opacity,1))}.bg-indigo-600{--tw-bg-opacity:1;background-color:rgb(79 70 229/var(--tw-bg-opacity,1))}.bg-pink-50{--tw-bg-opacity:1;background-color:rgb(253 242 248/var(--tw-bg-opacity,1))}.bg-pink-500{--tw-bg-opacity:1;background-color:rgb(236 72 153/var(--tw-bg-opacity,1))}.bg-purple-100{--tw-bg-opacity:1;background-color:rgb(243 232 255/var(--tw-bg-opacity,1))}.bg-purple-100\/70{background-color:rgba(243,232,255,.7)}.bg-purple-50{--tw-bg-opacity:1;background-color:rgb(250 245 255/var(--tw-bg-opacity,1))}.bg-purple-50\/50{background-color:rgba(250,245,255,.5)}.bg-rose-100{--tw-bg-opacity:1;background-color:rgb(255 228 230/var(--tw-bg-opacity,1))}.bg-rose-50{--tw-bg-opacity:1;background-color:rgb(255 241 242/var(--tw-bg-opacity,1))}.bg-sky-100\/80{background-color:rgba(224,242,254,.8)}.bg-sky-50{--tw-bg-opacity:1;background-color:rgb(240 249 255/var(--tw-bg-opacity,1))}.bg-sky-500{--tw-bg-opacity:1;background-color:rgb(14 165 233/var(--tw-bg-opacity,1))}.bg-slate-100{--tw-bg-opacity:1;background-color:rgb(241 245 249/var(--tw-bg-opacity,1))}.bg-slate-50\/80{background-color:rgba(248,250,252,.8)}.bg-slate-900{--tw-bg-opacity:1;background-color:rgb(15 23 42/var(--tw-bg-opacity,1))}.bg-slate-900\/60{background-color:rgba(15,23,42,.6)}.bg-teal-50{--tw-bg-opacity:1;background-color:rgb(240 253 250/var(--tw-bg-opacity,1))}.bg-teal-500{--tw-bg-opacity:1;background-color:rgb(20 184 166/var(--tw-bg-opacity,1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255/var(--tw-bg-opacity,1))}.bg-white\/90{background-color:hsla(0,0%,100%,.9)}.bg-gradient-to-b{background-image:linear-gradient(to bottom,var(--tw-gradient-stops))}.bg-gradient-to-br{background-image:linear-gradient(to bottom right,var(--tw-gradient-stops))}.bg-gradient-to-r{background-image:linear-gradient(to right,var(--tw-gradient-stops))}.bg-gradient-to-tr{background-image:linear-gradient(to top right,var(--tw-gradient-stops))}.from-emerald-50\/80{--tw-gradient-from:rgba(236,253,245,.8) var(--tw-gradient-from-position);--tw-gradient-to:rgba(236,253,245,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.from-indigo-50\/60{--tw-gradient-from:rgba(238,242,255,.6) var(--tw-gradient-from-position);--tw-gradient-to:rgba(238,242,255,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.from-indigo-600{--tw-gradient-from:#4f46e5 var(--tw-gradient-from-position);--tw-gradient-to:rgba(79,70,229,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.from-pink-50\/90{--tw-gradient-from:rgba(253,242,248,.9) var(--tw-gradient-from-position);--tw-gradient-to:rgba(253,242,248,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.from-pink-500{--tw-gradient-from:#ec4899 var(--tw-gradient-from-position);--tw-gradient-to:rgba(236,72,153,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.from-sky-50\/90{--tw-gradient-from:rgba(240,249,255,.9) var(--tw-gradient-from-position);--tw-gradient-to:rgba(240,249,255,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.from-teal-50\/90{--tw-gradient-from:rgba(240,253,250,.9) var(--tw-gradient-from-position);--tw-gradient-to:rgba(240,253,250,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.via-indigo-50\/50{--tw-gradient-to:rgba(238,242,255,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),rgba(238,242,255,.5) var(--tw-gradient-via-position),var(--tw-gradient-to)}.via-purple-500{--tw-gradient-to:rgba(168,85,247,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),#a855f7 var(--tw-gradient-via-position),var(--tw-gradient-to)}.via-purple-600{--tw-gradient-to:rgba(147,51,234,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),#9333ea var(--tw-gradient-via-position),var(--tw-gradient-to)}.via-slate-50{--tw-gradient-to:rgba(248,250,252,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),#f8fafc var(--tw-gradient-via-position),var(--tw-gradient-to)}.via-teal-50\/50{--tw-gradient-to:rgba(240,253,250,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),rgba(240,253,250,.5) var(--tw-gradient-via-position),var(--tw-gradient-to)}.to-emerald-50\/70{--tw-gradient-to:rgba(236,253,245,.7) var(--tw-gradient-to-position)}.to-emerald-50\/80{--tw-gradient-to:rgba(236,253,245,.8) var(--tw-gradient-to-position)}.to-indigo-500{--tw-gradient-to:#6366f1 var(--tw-gradient-to-position)}.to-pink-50\/40{--tw-gradient-to:rgba(253,242,248,.4) var(--tw-gradient-to-position)}.to-pink-600{--tw-gradient-to:#db2777 var(--tw-gradient-to-position)}.to-purple-50\/70{--tw-gradient-to:rgba(250,245,255,.7) var(--tw-gradient-to-position)}.to-rose-50\/70{--tw-gradient-to:rgba(255,241,242,.7) var(--tw-gradient-to-position)}.bg-clip-text{-webkit-background-clip:text;background-clip:text}.p-1\.5{padding:.375rem}.p-2{padding:.5rem}.p-2\.5{padding:.625rem}.p-3{padding:.75rem}.p-3\.5{padding:.875rem}.p-4{padding:1rem}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.px-2{padding-left:.5rem;padding-right:.5rem}.px-2\.5{padding-left:.625rem;padding-right:.625rem}.px-3{padding-left:.75rem;padding-right:.75rem}.px-3\.5{padding-left:.875rem;padding-right:.875rem}.px-4{padding-left:1rem;padding-right:1rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.py-0\.5{padding-top:.125rem;padding-bottom:.125rem}.py-1{padding-top:.25rem;padding-bottom:.25rem}.py-2{padding-top:.5rem;padding-bottom:.5rem}.py-2\.5{padding-top:.625rem;padding-bottom:.625rem}.py-3{padding-top:.75rem;padding-bottom:.75rem}.py-3\.5{padding-top:.875rem;padding-bottom:.875rem}.pb-2{padding-bottom:.5rem}.pb-3{padding-bottom:.75rem}.pt-3{padding-top:.75rem}.text-left{text-align:left}.text-center{text-align:center}.text-right{text-align:right}.font-mono{font-family:Fira Code,monospace}.font-sans{font-family:Outfit,sans-serif}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-\[10px\]{font-size:10px}.text-\[11px\]{font-size:11px}.text-\[8px\]{font-size:8px}.text-\[9px\]{font-size:9px}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:.75rem;line-height:1rem}.font-black{font-weight:900}.font-bold{font-weight:700}.font-extrabold{font-weight:800}.font-medium{font-weight:500}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.leading-relaxed{line-height:1.625}.tracking-wider{letter-spacing:.05em}.text-amber-600{--tw-text-opacity:1;color:rgb(217 119 6/var(--tw-text-opacity,1))}.text-amber-800{--tw-text-opacity:1;color:rgb(146 64 14/var(--tw-text-opacity,1))}.text-amber-900{--tw-text-opacity:1;color:rgb(120 53 15/var(--tw-text-opacity,1))}.text-emerald-400{--tw-text-opacity:1;color:rgb(52 211 153/var(--tw-text-opacity,1))}.text-emerald-700{--tw-text-opacity:1;color:rgb(4 120 87/var(--tw-text-opacity,1))}.text-emerald-800{--tw-text-opacity:1;color:rgb(6 95 70/var(--tw-text-opacity,1))}.text-emerald-900{--tw-text-opacity:1;color:rgb(6 78 59/var(--tw-text-opacity,1))}.text-indigo-400{--tw-text-opacity:1;color:rgb(129 140 248/var(--tw-text-opacity,1))}.text-indigo-500{--tw-text-opacity:1;color:rgb(99 102 241/var(--tw-text-opacity,1))}.text-indigo-600{--tw-text-opacity:1;color:rgb(79 70 229/var(--tw-text-opacity,1))}.text-indigo-700{--tw-text-opacity:1;color:rgb(67 56 202/var(--tw-text-opacity,1))}.text-indigo-900{--tw-text-opacity:1;color:rgb(49 46 129/var(--tw-text-opacity,1))}.text-pink-400{--tw-text-opacity:1;color:rgb(244 114 182/var(--tw-text-opacity,1))}.text-pink-500{--tw-text-opacity:1;color:rgb(236 72 153/var(--tw-text-opacity,1))}.text-pink-600{--tw-text-opacity:1;color:rgb(219 39 119/var(--tw-text-opacity,1))}.text-pink-700{--tw-text-opacity:1;color:rgb(190 24 93/var(--tw-text-opacity,1))}.text-pink-800{--tw-text-opacity:1;color:rgb(157 23 77/var(--tw-text-opacity,1))}.text-pink-900{--tw-text-opacity:1;color:rgb(131 24 67/var(--tw-text-opacity,1))}.text-purple-700{--tw-text-opacity:1;color:rgb(126 34 206/var(--tw-text-opacity,1))}.text-purple-900{--tw-text-opacity:1;color:rgb(88 28 135/var(--tw-text-opacity,1))}.text-rose-600{--tw-text-opacity:1;color:rgb(225 29 72/var(--tw-text-opacity,1))}.text-rose-800{--tw-text-opacity:1;color:rgb(159 18 57/var(--tw-text-opacity,1))}.text-sky-700{--tw-text-opacity:1;color:rgb(3 105 161/var(--tw-text-opacity,1))}.text-sky-800{--tw-text-opacity:1;color:rgb(7 89 133/var(--tw-text-opacity,1))}.text-sky-900{--tw-text-opacity:1;color:rgb(12 74 110/var(--tw-text-opacity,1))}.text-slate-400{--tw-text-opacity:1;color:rgb(148 163 184/var(--tw-text-opacity,1))}.text-slate-500{--tw-text-opacity:1;color:rgb(100 116 139/var(--tw-text-opacity,1))}.text-slate-600{--tw-text-opacity:1;color:rgb(71 85 105/var(--tw-text-opacity,1))}.text-slate-700{--tw-text-opacity:1;color:rgb(51 65 85/var(--tw-text-opacity,1))}.text-slate-800{--tw-text-opacity:1;color:rgb(30 41 59/var(--tw-text-opacity,1))}.text-slate-900{--tw-text-opacity:1;color:rgb(15 23 42/var(--tw-text-opacity,1))}.text-teal-400{--tw-text-opacity:1;color:rgb(45 212 191/var(--tw-text-opacity,1))}.text-teal-500{--tw-text-opacity:1;color:rgb(20 184 166/var(--tw-text-opacity,1))}.text-teal-600{--tw-text-opacity:1;color:rgb(13 148 136/var(--tw-text-opacity,1))}.text-teal-700{--tw-text-opacity:1;color:rgb(15 118 110/var(--tw-text-opacity,1))}.text-teal-800{--tw-text-opacity:1;color:rgb(17 94 89/var(--tw-text-opacity,1))}.text-teal-900{--tw-text-opacity:1;color:rgb(19 78 74/var(--tw-text-opacity,1))}.text-transparent{color:transparent}.text-white{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.accent-indigo-600{accent-color:#4f46e5}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgba(0,0,0,.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color)}.shadow-2xl,.shadow-inner{box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.shadow-inner{--tw-shadow:inset 0 2px 4px 0 rgba(0,0,0,.05);--tw-shadow-colored:inset 0 2px 4px 0 var(--tw-shadow-color)}.shadow-lg{--tw-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color),0 4px 6px -4px var(--tw-shadow-color)}.shadow-lg,.shadow-md{box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.shadow-md{--tw-shadow:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color),0 2px 4px -2px var(--tw-shadow-color)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgba(0,0,0,.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.shadow-amber-200{--tw-shadow-color:#fde68a;--tw-shadow:var(--tw-shadow-colored)}.shadow-emerald-200{--tw-shadow-color:#a7f3d0;--tw-shadow:var(--tw-shadow-colored)}.shadow-indigo-100{--tw-shadow-color:#e0e7ff;--tw-shadow:var(--tw-shadow-colored)}.shadow-indigo-200{--tw-shadow-color:#c7d2fe;--tw-shadow:var(--tw-shadow-colored)}.ring-4{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(4px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow,0 0 #0000)}.ring-indigo-400{--tw-ring-opacity:1;--tw-ring-color:rgb(129 140 248/var(--tw-ring-opacity,1))}.ring-pink-400{--tw-ring-opacity:1;--tw-ring-color:rgb(244 114 182/var(--tw-ring-opacity,1))}.ring-teal-400{--tw-ring-opacity:1;--tw-ring-color:rgb(45 212 191/var(--tw-ring-opacity,1))}.blur{--tw-blur:blur(8px)}.blur,.drop-shadow-\[0_0_12px_rgba\(52\2c 211\2c 153\2c 0\.8\)\]{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.drop-shadow-\[0_0_12px_rgba\(52\2c 211\2c 153\2c 0\.8\)\]{--tw-drop-shadow:drop-shadow(0 0 12px rgba(52,211,153,.8))}.filter{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.backdrop-blur{--tw-backdrop-blur:blur(8px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,-webkit-backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter,-webkit-backdrop-filter;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.duration-300{transition-duration:.3s}.selection\:bg-amber-300 ::-moz-selection{--tw-bg-opacity:1;background-color:rgb(252 211 77/var(--tw-bg-opacity,1))}.selection\:bg-amber-300 ::selection{--tw-bg-opacity:1;background-color:rgb(252 211 77/var(--tw-bg-opacity,1))}.selection\:text-slate-900 ::-moz-selection{--tw-text-opacity:1;color:rgb(15 23 42/var(--tw-text-opacity,1))}.selection\:text-slate-900 ::selection{--tw-text-opacity:1;color:rgb(15 23 42/var(--tw-text-opacity,1))}.selection\:bg-amber-300::-moz-selection{--tw-bg-opacity:1;background-color:rgb(252 211 77/var(--tw-bg-opacity,1))}.selection\:bg-amber-300::selection{--tw-bg-opacity:1;background-color:rgb(252 211 77/var(--tw-bg-opacity,1))}.selection\:text-slate-900::-moz-selection{--tw-text-opacity:1;color:rgb(15 23 42/var(--tw-text-opacity,1))}.selection\:text-slate-900::selection{--tw-text-opacity:1;color:rgb(15 23 42/var(--tw-text-opacity,1))}.hover\:scale-105:hover{--tw-scale-x:1.05;--tw-scale-y:1.05;transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:border-indigo-400:hover{--tw-border-opacity:1;border-color:rgb(129 140 248/var(--tw-border-opacity,1))}.hover\:bg-amber-200:hover{--tw-bg-opacity:1;background-color:rgb(253 230 138/var(--tw-bg-opacity,1))}.hover\:bg-amber-600:hover{--tw-bg-opacity:1;background-color:rgb(217 119 6/var(--tw-bg-opacity,1))}.hover\:bg-emerald-600:hover{--tw-bg-opacity:1;background-color:rgb(5 150 105/var(--tw-bg-opacity,1))}.hover\:bg-indigo-50\/40:hover{background-color:rgba(238,242,255,.4)}.hover\:bg-indigo-700:hover{--tw-bg-opacity:1;background-color:rgb(67 56 202/var(--tw-bg-opacity,1))}.hover\:bg-pink-100:hover{--tw-bg-opacity:1;background-color:rgb(252 231 243/var(--tw-bg-opacity,1))}.hover\:bg-purple-100:hover{--tw-bg-opacity:1;background-color:rgb(243 232 255/var(--tw-bg-opacity,1))}.hover\:bg-rose-100:hover{--tw-bg-opacity:1;background-color:rgb(255 228 230/var(--tw-bg-opacity,1))}.hover\:bg-rose-200:hover{--tw-bg-opacity:1;background-color:rgb(254 205 211/var(--tw-bg-opacity,1))}.disabled\:bg-slate-200:disabled,.hover\:bg-slate-200:hover{--tw-bg-opacity:1;background-color:rgb(226 232 240/var(--tw-bg-opacity,1))}.disabled\:text-slate-400:disabled{--tw-text-opacity:1;color:rgb(148 163 184/var(--tw-text-opacity,1))}.disabled\:shadow-none:disabled{--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.group:hover .group-hover\:text-indigo-600{--tw-text-opacity:1;color:rgb(79 70 229/var(--tw-text-opacity,1))}@media (min-width:640px){.sm\:inline{display:inline}.sm\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.sm\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.sm\:grid-cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}}@media (min-width:768px){.md\:col-span-5{grid-column:span 5/span 5}.md\:col-span-7{grid-column:span 7/span 7}.md\:grid-cols-12{grid-template-columns:repeat(12,minmax(0,1fr))}.md\:grid-cols-7{grid-template-columns:repeat(7,minmax(0,1fr))}.md\:p-6{padding:1.5rem}.md\:text-2xl{font-size:1.5rem;line-height:2rem}}@media (min-width:1024px){.lg\:col-span-12{grid-column:span 12/span 12}.lg\:col-span-3{grid-column:span 3/span 3}.lg\:col-span-6{grid-column:span 6/span 6}.lg\:grid-cols-12{grid-template-columns:repeat(12,minmax(0,1fr))}}
+
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 6px;
+        }
+        
+        .pulse-glow-ram {
+            box-shadow: 0 0 25px rgba(16, 185, 129, 0.4);
+        }
+        .pulse-glow-cu {
+            box-shadow: 0 0 25px rgba(139, 92, 246, 0.4);
+        }
+        .pulse-glow-alu {
+            box-shadow: 0 0 25px rgba(245, 158, 11, 0.45);
+        }
+        .pulse-glow-input {
+            box-shadow: 0 0 25px rgba(236, 72, 153, 0.4);
+        }
+        .pulse-glow-output {
+            box-shadow: 0 0 25px rgba(20, 184, 166, 0.5);
+        }
+
+        @keyframes dash {
+            to {
+                stroke-dashoffset: -32;
+            }
+        }
+        .bus-path-active {
+            stroke-dasharray: 8, 6;
+            animation: dash 0.5s linear infinite;
+        }
+
+        .btn-tactile {
+            transition: all 0.15s ease;
+            box-shadow: 0 4px 0 0 rgba(0, 0, 0, 0.12);
+        }
+        .btn-tactile:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.12);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-indigo-50/60 via-slate-50 to-pink-50/40 text-slate-800 font-sans min-h-screen flex flex-col justify-between selection:bg-amber-300 selection:text-slate-900">
+
+    <header class="border-b-2 border-indigo-100 bg-white/90 backdrop-blur sticky top-0 z-40 px-4 py-3 shadow-sm">
+        <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-3">
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 bg-gradient-to-tr from-pink-500 via-purple-500 to-indigo-500 rounded-2xl flex items-center justify-center text-white text-2xl shadow-lg shadow-indigo-200 transform hover:scale-105 transition">
+                    🧩
+                </div>
+                <div>
+                    <h1 class="text-xl md:text-2xl font-black bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+                        Il Modello di Von Neumann
+                    </h1>
+                    <p class="text-xs font-bold text-indigo-400">Laboratorio Didattico Interattivo &bull; Liceo Scientifico</p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-2.5 flex-wrap">
+                <button onclick="toggleTheoryModal()" class="btn-tactile px-3.5 py-2 text-xs font-extrabold rounded-2xl bg-purple-50 hover:bg-purple-100 text-purple-700 border-2 border-purple-200 flex items-center gap-1.5 transition">
+                    <span class="text-base">📖</span> Come funziona?
+                </button>
+                <button onclick="resetAll()" class="btn-tactile px-3.5 py-2 text-xs font-extrabold rounded-2xl bg-rose-50 hover:bg-rose-100 text-rose-600 border-2 border-rose-200 flex items-center gap-1 transition">
+                    <span class="text-base">🔄</span> Azzera Tutto
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto w-full p-4 flex-1 flex flex-col gap-5">
+
+        <!-- STEP 1 & EXECUTION CONTROLS -->
+        <section class="grid grid-cols-1 md:grid-cols-12 gap-4">
+            
+            <!-- Mini-Program Selector -->
+            <div class="md:col-span-7 bg-white rounded-3xl p-5 border-2 border-indigo-100 shadow-sm flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-3">
+                        <h2 class="text-xs font-black uppercase tracking-wider text-indigo-600 flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-indigo-500 animate-pulse"></span>
+                            1. Scegli il Mini-Programma
+                        </h2>
+                        <span class="text-[11px] font-bold px-3 py-1 rounded-xl bg-indigo-50 text-indigo-700 border border-indigo-200 font-mono">
+                            Istruzioni <span class="text-xs">➡️</span> RAM
+                        </span>
+                    </div>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+                        <button onclick="selectProgram('add')" id="btn-prog-add" class="prog-btn btn-tactile p-3 rounded-2xl border-2 border-slate-100 bg-slate-50/80 hover:border-indigo-400 hover:bg-indigo-50/40 text-left transition group">
+                            <div class="font-black text-xs text-slate-800 group-hover:text-indigo-600">➕ Somma</div>
+                            <div class="text-[10px] text-slate-400 font-semibold">Calcola A + B</div>
+                        </button>
+                        <button onclick="selectProgram('sub')" id="btn-prog-sub" class="prog-btn btn-tactile p-3 rounded-2xl border-2 border-slate-100 bg-slate-50/80 hover:border-indigo-400 hover:bg-indigo-50/40 text-left transition group">
+                            <div class="font-black text-xs text-slate-800 group-hover:text-indigo-600">➖ Sottrai</div>
+                            <div class="text-[10px] text-slate-400 font-semibold">Calcola A - B</div>
+                        </button>
+                        <button onclick="selectProgram('mul')" id="btn-prog-mul" class="prog-btn btn-tactile p-3 rounded-2xl border-2 border-slate-100 bg-slate-50/80 hover:border-indigo-400 hover:bg-indigo-50/40 text-left transition group">
+                            <div class="font-black text-xs text-slate-800 group-hover:text-indigo-600">✖️ Moltiplica</div>
+                            <div class="text-[10px] text-slate-400 font-semibold">Calcola A × B</div>
+                        </button>
+                        <button onclick="selectProgram('max')" id="btn-prog-max" class="prog-btn btn-tactile p-3 rounded-2xl border-2 border-slate-100 bg-slate-50/80 hover:border-indigo-400 hover:bg-indigo-50/40 text-left transition group">
+                            <div class="font-black text-xs text-slate-800 group-hover:text-indigo-600">👑 Massimo</div>
+                            <div class="text-[10px] text-slate-400 font-semibold">Maggiore tra A e B</div>
+                        </button>
+                        <button onclick="selectProgram('eq')" id="btn-prog-eq" class="prog-btn btn-tactile p-3 rounded-2xl border-2 border-slate-100 bg-slate-50/80 hover:border-indigo-400 hover:bg-indigo-50/40 text-left transition group">
+                            <div class="font-black text-xs text-slate-800 group-hover:text-indigo-600">⚖️ Uguali?</div>
+                            <div class="text-[10px] text-slate-400 font-semibold">Verifica se A == B</div>
+                        </button>
+                        <button onclick="selectProgram('avg')" id="btn-prog-avg" class="prog-btn btn-tactile p-3 rounded-2xl border-2 border-slate-100 bg-slate-50/80 hover:border-indigo-400 hover:bg-indigo-50/40 text-left transition group">
+                            <div class="font-black text-xs text-slate-800 group-hover:text-indigo-600">📊 Media</div>
+                            <div class="text-[10px] text-slate-400 font-semibold">(A + B) / 2</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="mt-4 pt-3 border-t border-indigo-50 text-xs font-semibold text-slate-500 flex items-center justify-between flex-wrap gap-2">
+                    <span>Scelto: <strong id="active-program-name" class="text-indigo-600 font-black">Nessun programma</strong></span>
+                    <button onclick="loadProgramToRAM()" id="btn-load-ram" disabled class="btn-tactile px-4 py-2 bg-indigo-600 hover:bg-indigo-700 disabled:bg-slate-200 disabled:text-slate-400 disabled:shadow-none text-white font-extrabold rounded-2xl text-xs transition flex items-center gap-1.5 shadow-md shadow-indigo-100">
+                        ⚡ Carica 4 Istruzioni in RAM
+                    </button>
+                </div>
+            </div>
+
+            <!-- Execution Control Panel -->
+            <div class="md:col-span-5 bg-white rounded-3xl p-5 border-2 border-indigo-100 shadow-sm flex flex-col justify-between">
+                <div>
+                    <h2 class="text-xs font-black uppercase tracking-wider text-amber-600 mb-2 flex items-center gap-1.5">
+                        <span class="text-base">⚙️</span> Controllo Esecuzione
+                    </h2>
+                    <p class="text-xs text-slate-400 font-medium mb-3">Avvia il ciclo Fetch-Decode-Execute passo dopo passo.</p>
+                    
+                    <div class="flex items-center gap-2 mb-4">
+                        <button id="btn-play" onclick="togglePlay()" class="btn-tactile flex-1 py-2.5 px-3 bg-emerald-500 hover:bg-emerald-600 text-white font-black rounded-2xl transition flex items-center justify-center gap-1.5 text-xs shadow-md shadow-emerald-200">
+                            <span id="play-icon" class="text-sm">▶</span>
+                            <span id="play-text">AVVIA (PLAY)</span>
+                        </button>
+                        <button id="btn-step" onclick="stepForward()" class="btn-tactile px-4 py-2.5 bg-amber-100 hover:bg-amber-200 text-amber-800 border-2 border-amber-300 font-black rounded-2xl transition text-xs flex items-center gap-1">
+                            <span>⏭</span> Passo
+                        </button>
+                        <button id="btn-stop" onclick="resetExecution()" class="btn-tactile px-3 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-600 border-2 border-slate-200 font-bold rounded-2xl transition text-xs">
+                            ⏹ Reset
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Speed Control Slider (Intuitive: right = faster) -->
+                <div class="pt-3 border-t border-indigo-50 flex items-center justify-between gap-3 text-xs">
+                    <span class="text-slate-400 font-bold whitespace-nowrap">🐢 Lento</span>
+                    <input type="range" id="speed-range" min="1" max="5" value="3" step="1" class="w-full accent-indigo-600 cursor-pointer">
+                    <span class="text-slate-400 font-bold whitespace-nowrap">Veloce 🐇</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- STEP 2: ARCHITECTURE SCHEMATIC CANVAS -->
+        <section class="relative bg-white border-2 border-indigo-100 rounded-3xl p-4 md:p-6 shadow-sm overflow-hidden min-h-[600px] flex flex-col justify-between">
+            
+            <!-- Animated SVG Data Buses -->
+            <svg id="bus-svg" class="absolute inset-0 w-full h-full pointer-events-none z-10">
+                <defs>
+                    <filter id="glow-particle" x="-20%" y="-20%" width="140%" height="140%">
+                        <feGaussianBlur stdDeviation="3" result="blur" />
+                        <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                    </filter>
+                </defs>
+
+                <path id="path-input-ram" class="transition-all duration-300" stroke="#cbd5e1" stroke-width="4" fill="none" stroke-dasharray="6,6" />
+                <path id="path-ram-cu" class="transition-all duration-300" stroke="#cbd5e1" stroke-width="4" fill="none" stroke-dasharray="6,6" />
+                <path id="path-ram-alu" class="transition-all duration-300" stroke="#cbd5e1" stroke-width="4" fill="none" stroke-dasharray="6,6" />
+                <path id="path-cu-alu" class="transition-all duration-300" stroke="#cbd5e1" stroke-width="4" fill="none" stroke-dasharray="6,6" />
+                <path id="path-alu-output" class="transition-all duration-300" stroke="#cbd5e1" stroke-width="4" fill="none" stroke-dasharray="6,6" />
+
+                <circle id="bus-particle" r="9" fill="#0284c7" filter="url(#glow-particle)" opacity="0" />
+            </svg>
+
+            <!-- ARCHITECTURE LAYOUT GRID -->
+            <div class="relative z-20 grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch my-auto">
+                
+                <!-- TOP: RAM -->
+                <div class="lg:col-span-12">
+                    <div id="box-ram" class="bg-gradient-to-r from-emerald-50/80 via-teal-50/50 to-emerald-50/80 border-3 border-emerald-300 rounded-3xl p-5 backdrop-blur transition-all duration-300 shadow-sm">
+                        <div class="flex items-center justify-between mb-3 border-b-2 border-emerald-200/60 pb-2">
+                            <div class="flex items-center gap-2.5">
+                                <span class="px-3 py-1 rounded-xl bg-emerald-500 text-white font-mono text-xs font-black shadow-sm">
+                                    RAM
+                                </span>
+                                <h3 class="font-extrabold text-sm text-emerald-900 flex items-center gap-1.5">
+                                    💾 Memoria Principale (RAM)
+                                </h3>
+                                <span class="text-xs text-emerald-700 font-semibold hidden sm:inline">&bull; Contiene il Programma e i Dati</span>
+                            </div>
+                            <span class="text-[11px] font-mono font-bold text-emerald-700 bg-emerald-100/80 px-3 py-1 rounded-xl border border-emerald-300">
+                                Bus Dati / Indirizzi
+                            </span>
+                        </div>
+
+                        <!-- Cells Grid -->
+                        <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-2.5 font-mono text-xs">
+                            
+                            <!-- Instruction Area (0x00 - 0x03) -->
+                            <div id="ram-0x00" class="ram-cell p-2.5 rounded-2xl bg-white border-2 border-indigo-200 flex flex-col justify-between h-18 transition shadow-xs">
+                                <span class="text-[9px] font-bold text-indigo-500">ADDR 0x00 [IST 1]</span>
+                                <span class="ram-val text-indigo-900 font-black text-center text-xs truncate">NOP</span>
+                                <span class="text-[8px] font-bold text-slate-400 text-right">Carica A</span>
+                            </div>
+                            <div id="ram-0x01" class="ram-cell p-2.5 rounded-2xl bg-white border-2 border-indigo-200 flex flex-col justify-between h-18 transition shadow-xs">
+                                <span class="text-[9px] font-bold text-indigo-500">ADDR 0x01 [IST 2]</span>
+                                <span class="ram-val text-indigo-900 font-black text-center text-xs truncate">NOP</span>
+                                <span class="text-[8px] font-bold text-slate-400 text-right">Carica B</span>
+                            </div>
+                            <div id="ram-0x02" class="ram-cell p-2.5 rounded-2xl bg-white border-2 border-indigo-200 flex flex-col justify-between h-18 transition shadow-xs">
+                                <span class="text-[9px] font-bold text-indigo-500">ADDR 0x02 [IST 3]</span>
+                                <span class="ram-val text-indigo-900 font-black text-center text-xs truncate">NOP</span>
+                                <span class="text-[8px] font-bold text-slate-400 text-right">Calcola</span>
+                            </div>
+                            <div id="ram-0x03" class="ram-cell p-2.5 rounded-2xl bg-white border-2 border-indigo-200 flex flex-col justify-between h-18 transition shadow-xs">
+                                <span class="text-[9px] font-bold text-indigo-500">ADDR 0x03 [IST 4]</span>
+                                <span class="ram-val text-indigo-900 font-black text-center text-xs truncate">NOP</span>
+                                <span class="text-[8px] font-bold text-slate-400 text-right">Output</span>
+                            </div>
+
+                            <!-- Data Area (0x10 - 0x12) -->
+                            <div id="ram-0x10" class="ram-cell p-2.5 rounded-2xl bg-white border-2 border-pink-300 flex flex-col justify-between h-18 transition shadow-xs">
+                                <span class="text-[9px] font-bold text-pink-500">ADDR 0x10 [DATO A]</span>
+                                <span class="ram-val text-pink-600 font-black text-center text-sm">--</span>
+                                <span class="text-[8px] font-bold text-pink-400 text-right">Input A</span>
+                            </div>
+                            <div id="ram-0x11" class="ram-cell p-2.5 rounded-2xl bg-white border-2 border-pink-300 flex flex-col justify-between h-18 transition shadow-xs">
+                                <span class="text-[9px] font-bold text-pink-500">ADDR 0x11 [DATO B]</span>
+                                <span class="ram-val text-pink-600 font-black text-center text-sm">--</span>
+                                <span class="text-[8px] font-bold text-pink-400 text-right">Input B</span>
+                            </div>
+                            <div id="ram-0x12" class="ram-cell p-2.5 rounded-2xl bg-white border-2 border-teal-400 flex flex-col justify-between h-18 transition shadow-xs">
+                                <span class="text-[9px] font-bold text-teal-600">ADDR 0x12 [RISULTATO]</span>
+                                <span class="ram-val text-teal-700 font-black text-center text-sm">--</span>
+                                <span class="text-[8px] font-bold text-teal-500 text-right">Output Reg</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MIDDLE LEFT: INPUT KEYPAD -->
+                <div class="lg:col-span-3 flex flex-col justify-between">
+                    <div id="box-input" class="bg-gradient-to-b from-pink-50/90 to-rose-50/70 border-3 border-pink-300 rounded-3xl p-4 backdrop-blur h-full flex flex-col justify-between transition-all duration-300 shadow-sm">
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="px-2.5 py-0.5 rounded-xl bg-pink-500 text-white font-mono text-xs font-black">INPUT</span>
+                                <h3 class="font-extrabold text-xs text-pink-900">⌨️ Tastiera Numerica</h3>
+                            </div>
+                            <p class="text-[11px] text-pink-800 font-semibold mb-2">Imposta i dati nella RAM:</p>
+                            
+                            <div class="grid grid-cols-2 gap-2 mb-2.5">
+                                <button onclick="setActiveInputTarget('A')" id="target-btn-A" class="btn-tactile py-2 px-2.5 rounded-2xl text-xs font-mono font-bold bg-pink-500 text-white border border-pink-400 transition">
+                                    Dato A: <span id="label-val-A">5</span>
+                                </button>
+                                <button onclick="setActiveInputTarget('B')" id="target-btn-B" class="btn-tactile py-2 px-2.5 rounded-2xl text-xs font-mono font-bold bg-white text-slate-700 border border-slate-200 transition">
+                                    Dato B: <span id="label-val-B">3</span>
+                                </button>
+                            </div>
+
+                            <div class="grid grid-cols-3 gap-1.5 font-mono text-xs">
+                                <button onclick="pressKey('7')" class="btn-tactile p-2.5 bg-white hover:bg-pink-100 rounded-xl font-bold text-slate-800 border border-slate-200 transition">7</button>
+                                <button onclick="pressKey('8')" class="btn-tactile p-2.5 bg-white hover:bg-pink-100 rounded-xl font-bold text-slate-800 border border-slate-200 transition">8</button>
+                                <button onclick="pressKey('9')" class="btn-tactile p-2.5 bg-white hover:bg-pink-100 rounded-xl font-bold text-slate-800 border border-slate-200 transition">9</button>
+                                <button onclick="pressKey('4')" class="btn-tactile p-2.5 bg-white hover:bg-pink-100 rounded-xl font-bold text-slate-800 border border-slate-200 transition">4</button>
+                                <button onclick="pressKey('5')" class="btn-tactile p-2.5 bg-white hover:bg-pink-100 rounded-xl font-bold text-slate-800 border border-slate-200 transition">5</button>
+                                <button onclick="pressKey('6')" class="btn-tactile p-2.5 bg-white hover:bg-pink-100 rounded-xl font-bold text-slate-800 border border-slate-200 transition">6</button>
+                                <button onclick="pressKey('1')" class="btn-tactile p-2.5 bg-white hover:bg-pink-100 rounded-xl font-bold text-slate-800 border border-slate-200 transition">1</button>
+                                <button onclick="pressKey('2')" class="btn-tactile p-2.5 bg-white hover:bg-pink-100 rounded-xl font-bold text-slate-800 border border-slate-200 transition">2</button>
+                                <button onclick="pressKey('3')" class="btn-tactile p-2.5 bg-white hover:bg-pink-100 rounded-xl font-bold text-slate-800 border border-slate-200 transition">3</button>
+                                <button onclick="pressKey('C')" class="btn-tactile p-2.5 bg-rose-100 hover:bg-rose-200 text-rose-800 rounded-xl font-bold border border-rose-200 transition">C</button>
+                                <button onclick="pressKey('0')" class="btn-tactile p-2.5 bg-white hover:bg-pink-100 rounded-xl font-bold text-slate-800 border border-slate-200 transition">0</button>
+                                <button onclick="sendDataToRAM()" class="btn-tactile p-2.5 bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-xl transition text-[10px]">INVIA</button>
+                            </div>
+                        </div>
+                        <div class="mt-3 text-[10px] font-bold text-pink-700 text-center font-mono">
+                            Celle 0x10 (A) e 0x11 (B)
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MIDDLE CENTER: CPU (CU + ALU) -->
+                <div class="lg:col-span-6">
+                    <div id="box-cpu" class="bg-gradient-to-br from-sky-50/90 via-indigo-50/50 to-purple-50/70 border-3 border-sky-300 rounded-3xl p-5 backdrop-blur h-full flex flex-col justify-between transition-all duration-300 shadow-sm">
+                        <div class="flex items-center justify-between mb-3 border-b-2 border-sky-200/60 pb-2">
+                            <div class="flex items-center gap-2.5">
+                                <span class="px-3 py-1 rounded-xl bg-sky-500 text-white font-mono text-xs font-black">CPU</span>
+                                <h3 class="font-extrabold text-sm text-sky-900">🤖 Unità Centrale (CPU)</h3>
+                            </div>
+                            <span class="text-[11px] font-mono font-bold text-sky-700 bg-sky-100/80 px-3 py-1 rounded-xl border border-sky-300">
+                                Stato: <span id="cpu-clock-state" class="text-sky-900 font-black">IDLE</span>
+                            </span>
+                        </div>
+
+                        <!-- CU and ALU sub-boxes -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 my-1">
+                            
+                            <!-- Control Unit -->
+                            <div id="box-cu" class="bg-white/90 border-2 border-purple-300 rounded-2xl p-3.5 transition-all duration-300 flex flex-col justify-between shadow-xs">
+                                <div>
+                                    <div class="flex items-center justify-between mb-2">
+                                        <h4 class="font-black text-xs text-purple-900 flex items-center gap-1">
+                                            🧠 Control Unit (CU)
+                                        </h4>
+                                        <span class="text-[9px] font-extrabold px-2 py-0.5 rounded-lg bg-purple-100 text-purple-700 font-mono">FETCH/DECODE</span>
+                                    </div>
+                                    <div class="space-y-2 font-mono text-[11px]">
+                                        <div class="bg-purple-50/50 p-2 rounded-xl border border-purple-100 flex justify-between">
+                                            <span class="text-slate-500 font-bold">PC (Program Counter):</span>
+                                            <span id="reg-pc" class="text-purple-700 font-black">0x00</span>
+                                        </div>
+                                        <div class="bg-purple-50/50 p-2 rounded-xl border border-purple-100 flex justify-between">
+                                            <span class="text-slate-500 font-bold">IR (Instruction Reg):</span>
+                                            <span id="reg-ir" class="text-purple-700 font-black truncate max-w-[100px]">ATTESA</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-3 text-[10px] bg-purple-100/70 text-purple-900 p-2 rounded-xl border border-purple-200 text-center font-mono font-bold">
+                                    Fase: <span id="cu-action-label" class="text-purple-700 font-black">Inattiva</span>
+                                </div>
+                            </div>
+
+                            <!-- ALU -->
+                            <div id="box-alu" class="bg-white/90 border-2 border-amber-300 rounded-2xl p-3.5 transition-all duration-300 flex flex-col justify-between shadow-xs">
+                                <div>
+                                    <div class="flex items-center justify-between mb-2">
+                                        <h4 class="font-black text-xs text-amber-900 flex items-center gap-1">
+                                            ⚡ ALU (Calcolo)
+                                        </h4>
+                                        <span class="text-[9px] font-extrabold px-2 py-0.5 rounded-lg bg-amber-100 text-amber-800 font-mono">EXECUTE</span>
+                                    </div>
+                                    
+                                    <div class="grid grid-cols-2 gap-1.5 font-mono text-[11px] mb-2.5">
+                                        <div class="bg-amber-50/50 p-1.5 rounded-xl border border-amber-100 text-center">
+                                            <span class="text-[8px] text-slate-400 block font-bold">Reg. Op A</span>
+                                            <span id="alu-op1" class="text-amber-800 font-black">--</span>
+                                        </div>
+                                        <div class="bg-amber-50/50 p-1.5 rounded-xl border border-amber-100 text-center">
+                                            <span class="text-[8px] text-slate-400 block font-bold">Reg. Op B</span>
+                                            <span id="alu-op2" class="text-amber-800 font-black">--</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex justify-center gap-1 my-1">
+                                        <span id="op-add" class="px-2 py-0.5 text-[10px] font-black rounded-lg bg-slate-100 text-slate-400 transition">+</span>
+                                        <span id="op-sub" class="px-2 py-0.5 text-[10px] font-black rounded-lg bg-slate-100 text-slate-400 transition">-</span>
+                                        <span id="op-mul" class="px-2 py-0.5 text-[10px] font-black rounded-lg bg-slate-100 text-slate-400 transition">×</span>
+                                        <span id="op-max" class="px-2 py-0.5 text-[10px] font-black rounded-lg bg-slate-100 text-slate-400 transition">&gt;</span>
+                                        <span id="op-eq" class="px-2 py-0.5 text-[10px] font-black rounded-lg bg-slate-100 text-slate-400 transition">==</span>
+                                        <span id="op-avg" class="px-2 py-0.5 text-[10px] font-black rounded-lg bg-slate-100 text-slate-400 transition">AVG</span>
+                                    </div>
+                                </div>
+
+                                <div class="bg-amber-50/50 p-2 rounded-xl border border-amber-100 flex justify-between items-center font-mono text-[11px]">
+                                    <span class="text-slate-500 font-bold">Accumulatore:</span>
+                                    <span id="alu-result" class="text-amber-600 font-black text-sm">--</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MIDDLE RIGHT: OUTPUT MONITOR -->
+                <div class="lg:col-span-3 flex flex-col justify-between">
+                    <div id="box-output" class="bg-gradient-to-b from-teal-50/90 to-emerald-50/70 border-3 border-teal-300 rounded-3xl p-4 backdrop-blur h-full flex flex-col justify-between transition-all duration-300 shadow-sm">
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="px-2.5 py-0.5 rounded-xl bg-teal-500 text-white font-mono text-xs font-black">OUTPUT</span>
+                                <h3 class="font-extrabold text-xs text-teal-900">📺 Monitor Display</h3>
+                            </div>
+                            <p class="text-[11px] text-teal-800 font-semibold mb-2">Risultato finale:</p>
+                            
+                            <div class="bg-slate-900 rounded-2xl p-4 border-2 border-teal-400 shadow-inner text-center my-2 min-h-[105px] flex flex-col justify-center items-center">
+                                <span class="text-[9px] font-mono text-teal-400 mb-1">=== SCHERMO ===</span>
+                                <div id="monitor-screen-text" class="text-3xl font-black font-mono tracking-wider text-emerald-400 drop-shadow-[0_0_12px_rgba(52,211,153,0.8)]">
+                                    READY
+                                </div>
+                                <span id="monitor-subtext" class="text-[10px] text-slate-400 mt-1 font-semibold">In attesa...</span>
+                            </div>
+                        </div>
+
+                        <div class="mt-2 text-[10px] font-mono text-slate-600 bg-white p-2.5 rounded-2xl border border-teal-200 max-h-24 overflow-y-auto shadow-2xs" id="output-log">
+                            <div>&gt; Sistema pronto per la didattica.</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- STEP 3: DIDACTIC EXPLANATION -->
+        <section class="bg-white rounded-3xl p-5 border-2 border-indigo-100 shadow-sm">
+            <div class="flex items-start gap-3.5">
+                <div class="w-12 h-12 rounded-2xl bg-amber-100 border-2 border-amber-300 text-amber-800 flex items-center justify-center font-black text-xl shrink-0 shadow-sm">
+                    💡
+                </div>
+                <div class="flex-1">
+                    <div class="flex items-center justify-between flex-wrap gap-2 mb-1.5">
+                        <h3 class="font-extrabold text-sm text-slate-900">Spiegazione del Passo Corrente</h3>
+                        <span id="step-badge" class="px-3.5 py-1 rounded-2xl text-xs font-black font-mono bg-indigo-50 text-indigo-700 border border-indigo-200">
+                            Fase: PRONTO
+                        </span>
+                    </div>
+                    <p id="explanation-text" class="text-xs text-slate-600 font-medium leading-relaxed">
+                        Seleziona un mini-programma in alto, imposta i numeri con la tastiera rosa, clicca su <strong>"Carica 4 Istruzioni in RAM"</strong> e premi <strong>AVVIA (PLAY)</strong>! Vedrai chiaramente come le prime due istruzioni caricano gli operandi nei registri CPU, la terza esegue il calcolo nell'ALU e la quarta mostra il risultato sul Monitor.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-indigo-100 bg-white py-3.5 px-4 text-center text-xs font-bold text-indigo-400">
+        Simulatore Didattico del Modello di Von Neumann &bull; Liceo Scientifico (Informatica)
+    </footer>
+
+    <!-- THEORY MODAL -->
+    <div id="theory-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white border-2 border-indigo-100 rounded-3xl max-w-2xl w-full p-6 shadow-2xl overflow-y-auto max-h-[90vh]">
+            <div class="flex justify-between items-center pb-3 border-b-2 border-indigo-50 mb-4">
+                <h3 class="text-lg font-black text-indigo-900 flex items-center gap-2">
+                    <span>📖</span> Il Modello di Von Neumann (1945)
+                </h3>
+                <button onclick="toggleTheoryModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 font-black text-slate-600 text-lg flex items-center justify-center transition">&times;</button>
+            </div>
+            <div class="space-y-3 text-xs text-slate-600 font-semibold leading-relaxed">
+                <p>
+                    L'architettura di Von Neumann è il pilastro di tutti i computer moderni. La sua intuizione rivoluzionaria fu il <strong>programma memorizzato</strong>: sia le istruzioni che i dati risiedono nella stessa memoria RAM!
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 my-2">
+                    <div class="p-3.5 bg-emerald-50 rounded-2xl border border-emerald-200">
+                        <h4 class="font-extrabold text-emerald-900 text-sm mb-1">1. Memoria RAM</h4>
+                        <p class="text-[11px] text-emerald-800">Celle con indirizzo univoco che conservano sia la sequenza di istruzioni sia i dati di lavoro.</p>
+                    </div>
+                    <div class="p-3.5 bg-sky-50 rounded-2xl border border-sky-200">
+                        <h4 class="font-extrabold text-sky-900 text-sm mb-1">2. Unità CPU</h4>
+                        <p class="text-[11px] text-sky-800">Composta da <strong>CU</strong> (legge e decodifica le istruzioni) e <strong>ALU</strong> (esegue i calcoli sui dati).</p>
+                    </div>
+                    <div class="p-3.5 bg-pink-50 rounded-2xl border border-pink-200">
+                        <h4 class="font-extrabold text-pink-900 text-sm mb-1">3. Input (Tastiera)</h4>
+                        <p class="text-[11px] text-pink-800">Permette di inserire i dati numerici dall'esterno nelle celle di memoria dati della RAM.</p>
+                    </div>
+                    <div class="p-3.5 bg-teal-50 rounded-2xl border border-teal-200">
+                        <h4 class="font-extrabold text-teal-900 text-sm mb-1">4. Output (Monitor)</h4>
+                        <p class="text-[11px] text-teal-800">Visualizza all'utente finale il risultato calcolato dalla CPU e salvato in RAM.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-5 text-right">
+                <button onclick="toggleTheoryModal()" class="btn-tactile px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-black rounded-2xl text-xs">Ho capito!</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const state = {
+            selectedProgramKey: null,
+            inputTarget: 'A',
+            valA: 5,
+            valB: 3,
+            ram: {
+                '0x00': 'NOP',
+                '0x01': 'NOP',
+                '0x02': 'NOP',
+                '0x03': 'NOP',
+                '0x10': 5,
+                '0x11': 3,
+                '0x12': null
+            },
+            cpu: {
+                pc: '0x00',
+                ir: 'NOP',
+                cuState: 'IDLE',
+                aluOp: null,
+                aluOp1: null,
+                aluOp2: null,
+                aluResult: null
+            },
+            execution: {
+                isRunning: false,
+                stepIndex: 0,
+                speedMs: 1200,
+                timer: null
+            }
+        };
+
+        // Standard 4-Instruction Programs for Von Neumann Architecture
+        const PROGRAMS = {
+            add: {
+                name: "Somma (A + B)",
+                op: "ADD",
+                instructions: [
+                    { ir: "LOAD A, 0x10", desc: "1° Istruzione: Legge il dato A dalla RAM [0x10] nel registro CPU Operando A" },
+                    { ir: "LOAD B, 0x11", desc: "2° Istruzione: Legge il dato B dalla RAM [0x11] nel registro CPU Operando B" },
+                    { ir: "CALC ADD", desc: "3° Istruzione: L'ALU esegue la SOMMA sugli operandi ormai presenti nella CPU" },
+                    { ir: "STORE 0x12 & OUT", desc: "4° Istruzione: Salva la somma in RAM [0x12] e proietta sul Monitor" }
+                ],
+                compute: (a, b) => a + b
+            },
+            sub: {
+                name: "Sottrazione (A - B)",
+                op: "SUB",
+                instructions: [
+                    { ir: "LOAD A, 0x10", desc: "1° Istruzione: Legge il dato A dalla RAM [0x10] nel registro CPU Operando A" },
+                    { ir: "LOAD B, 0x11", desc: "2° Istruzione: Legge il dato B dalla RAM [0x11] nel registro CPU Operando B" },
+                    { ir: "CALC SUB", desc: "3° Istruzione: L'ALU esegue la SOTTRAZIONE (A - B) sugli operandi nella CPU" },
+                    { ir: "STORE 0x12 & OUT", desc: "4° Istruzione: Salva il risultato in RAM [0x12] e invia al Monitor" }
+                ],
+                compute: (a, b) => a - b
+            },
+            mul: {
+                name: "Moltiplicazione (A × B)",
+                op: "MUL",
+                instructions: [
+                    { ir: "LOAD A, 0x10", desc: "1° Istruzione: Carica il fattore A dalla RAM [0x10] nel registro CPU A" },
+                    { ir: "LOAD B, 0x11", desc: "2° Istruzione: Carica il fattore B dalla RAM [0x11] nel registro CPU B" },
+                    { ir: "CALC MUL", desc: "3° Istruzione: L'ALU esegue la MOLTIPLICAZIONE (A × B) nella CPU" },
+                    { ir: "STORE 0x12 & OUT", desc: "4° Istruzione: Salva il prodotto in RAM [0x12] ed invia all'Output" }
+                ],
+                compute: (a, b) => a * b
+            },
+            max: {
+                name: "Massimo max(A, B)",
+                op: "MAX",
+                instructions: [
+                    { ir: "LOAD A, 0x10", desc: "1° Istruzione: Carica il numero A dalla RAM [0x10] nel registro CPU A" },
+                    { ir: "LOAD B, 0x11", desc: "2° Istruzione: Carica il numero B dalla RAM [0x11] nel registro CPU B" },
+                    { ir: "CALC MAX", desc: "3° Istruzione: L'ALU confronta i due registri e seleziona il MAGGIORE" },
+                    { ir: "STORE 0x12 & OUT", desc: "4° Istruzione: Salva il valore massimo in RAM ed invia al Monitor" }
+                ],
+                compute: (a, b) => Math.max(a, b)
+            },
+            eq: {
+                name: "Uguaglianza (A == B)",
+                op: "EQ",
+                instructions: [
+                    { ir: "LOAD A, 0x10", desc: "1° Istruzione: Carica il valore A nel registro CPU A" },
+                    { ir: "LOAD B, 0x11", desc: "2° Istruzione: Carica il valore B nel registro CPU B" },
+                    { ir: "CALC EQUAL?", desc: "3° Istruzione: L'ALU verifica se A == B (1 = Vero, 0 = Falso)" },
+                    { ir: "STORE 0x12 & OUT", desc: "4° Istruzione: Salva il risultato logico in RAM ed invia al Monitor" }
+                ],
+                compute: (a, b) => (a === b ? 1 : 0)
+            },
+            avg: {
+                name: "Media (A + B) / 2",
+                op: "AVG",
+                instructions: [
+                    { ir: "LOAD A, 0x10", desc: "1° Istruzione: Carica il valore A nel registro CPU A" },
+                    { ir: "LOAD B, 0x11", desc: "2° Istruzione: Carica il valore B nel registro CPU B" },
+                    { ir: "CALC AVG", desc: "3° Istruzione: L'ALU calcola la media aritmetica (A + B) / 2" },
+                    { ir: "STORE 0x12 & OUT", desc: "4° Istruzione: Salva la media in RAM ed invia al Monitor" }
+                ],
+                compute: (a, b) => Math.round(((a + b) / 2) * 10) / 10
+            }
+        };
+
+        window.onload = function() {
+            updateSVGBusLines();
+            window.addEventListener('resize', updateSVGBusLines);
+            
+            // Speed slider handler (Intuitive: right = faster execution / shorter delay)
+            const speedSlider = document.getElementById('speed-range');
+            speedSlider.addEventListener('input', (e) => {
+                const val = parseInt(e.target.value);
+                // Map slider 1..5 to delay in ms: 1 -> 2200ms (slow), 3 -> 1200ms (normal), 5 -> 300ms (fast)
+                const delays = { 1: 2200, 2: 1700, 3: 1200, 4: 700, 5: 300 };
+                state.execution.speedMs = delays[val] || 1200;
+            });
+
+            updateRAMDisplay();
+            updateCPUDisplay();
+            logMessage("Sistema pronto. Seleziona un programma per iniziare.");
+        };
+
+        function toggleTheoryModal() {
+            document.getElementById('theory-modal').classList.toggle('hidden');
+        }
+
+        function selectProgram(key) {
+            state.selectedProgramKey = key;
+            const prog = PROGRAMS[key];
+            
+            document.querySelectorAll('.prog-btn').forEach(btn => btn.classList.remove('ring-4', 'ring-indigo-400', 'bg-indigo-50'));
+            const activeBtn = document.getElementById(`btn-prog-${key}`);
+            if (activeBtn) activeBtn.classList.add('ring-4', 'ring-indigo-400', 'bg-indigo-50');
+
+            document.getElementById('active-program-name').innerText = prog.name;
+            document.getElementById('btn-load-ram').disabled = false;
+
+            logMessage(`Selezionato programma: "${prog.name}".`);
+            document.getElementById('explanation-text').innerText = `Hai scelto "${prog.name}". Premi "Carica 4 Istruzioni in RAM" per posizionare le istruzioni nelle celle 0x00..0x03!`;
+        }
+
+        function loadProgramToRAM() {
+            if (!state.selectedProgramKey) return;
+            const prog = PROGRAMS[state.selectedProgramKey];
+
+            state.ram['0x00'] = prog.instructions[0].ir;
+            state.ram['0x01'] = prog.instructions[1].ir;
+            state.ram['0x02'] = prog.instructions[2].ir;
+            state.ram['0x03'] = prog.instructions[3].ir;
+
+            updateRAMDisplay();
+            animateBusPath('path-input-ram', '#6366f1');
+            logMessage(`Caricate 4 istruzioni del programma "${prog.name}" nelle celle 0x00..0x03.`);
+            
+            document.getElementById('explanation-text').innerHTML = `Istruzioni caricate in RAM (celle <strong>0x00, 0x01, 0x02, 0x03</strong>)! <br>Ora premi <strong>AVVIA (PLAY)</strong> o <strong>Passo</strong> per avviare il ciclo di Von Neumann.`;
+        }
+
+        function setActiveInputTarget(target) {
+            state.inputTarget = target;
+            const btnA = document.getElementById('target-btn-A');
+            const btnB = document.getElementById('target-btn-B');
+
+            if (target === 'A') {
+                btnA.className = "btn-tactile py-2 px-2.5 rounded-2xl text-xs font-mono font-bold bg-pink-500 text-white border border-pink-400 transition";
+                btnB.className = "btn-tactile py-2 px-2.5 rounded-2xl text-xs font-mono font-bold bg-white text-slate-700 border border-slate-200 transition";
+            } else {
+                btnB.className = "btn-tactile py-2 px-2.5 rounded-2xl text-xs font-mono font-bold bg-pink-500 text-white border border-pink-400 transition";
+                btnA.className = "btn-tactile py-2 px-2.5 rounded-2xl text-xs font-mono font-bold bg-white text-slate-700 border border-slate-200 transition";
+            }
+        }
+
+        function pressKey(val) {
+            let currentVal = state.inputTarget === 'A' ? state.valA.toString() : state.valB.toString();
+            
+            if (val === 'C') {
+                currentVal = "0";
+            } else {
+                if (currentVal === "0") currentVal = val;
+                else if (currentVal.length < 3) currentVal += val;
+            }
+
+            const num = parseInt(currentVal, 10) || 0;
+            if (state.inputTarget === 'A') {
+                state.valA = num;
+                document.getElementById('label-val-A').innerText = num;
+            } else {
+                state.valB = num;
+                document.getElementById('label-val-B').innerText = num;
+            }
+        }
+
+        function sendDataToRAM() {
+            state.ram['0x10'] = state.valA;
+            state.ram['0x11'] = state.valB;
+            
+            updateRAMDisplay();
+            animateBusPath('path-input-ram', '#ec4899');
+            
+            logMessage(`Dati inviati alla RAM: A (0x10) = ${state.valA}, B (0x11) = ${state.valB}`);
+            document.getElementById('box-input').classList.add('pulse-glow-input');
+            setTimeout(() => document.getElementById('box-input').classList.remove('pulse-glow-input'), 800);
+        }
+
+        function togglePlay() {
+            if (state.execution.isRunning) {
+                pauseExecution();
+            } else {
+                startExecution();
+            }
+        }
+
+        function startExecution() {
+            if (!state.selectedProgramKey) {
+                document.getElementById('explanation-text').innerHTML = "<span class='text-rose-600 font-bold'>⚠️ Seleziona prima un mini-programma e caricalo in RAM!</span>";
+                return;
+            }
+
+            state.execution.isRunning = true;
+            document.getElementById('play-icon').innerText = "⏸";
+            document.getElementById('play-text').innerText = "PAUSA";
+            document.getElementById('btn-play').className = "btn-tactile flex-1 py-2.5 px-3 bg-amber-500 hover:bg-amber-600 text-white font-black rounded-2xl transition flex items-center justify-center gap-1.5 text-xs shadow-md shadow-amber-200";
+
+            runNextStepLoop();
+        }
+
+        function pauseExecution() {
+            state.execution.isRunning = false;
+            if (state.execution.timer) clearTimeout(state.execution.timer);
+            document.getElementById('play-icon').innerText = "▶";
+            document.getElementById('play-text').innerText = "AVVIA (PLAY)";
+            document.getElementById('btn-play').className = "btn-tactile flex-1 py-2.5 px-3 bg-emerald-500 hover:bg-emerald-600 text-white font-black rounded-2xl transition flex items-center justify-center gap-1.5 text-xs shadow-md shadow-emerald-200";
+        }
+
+        function runNextStepLoop() {
+            if (!state.execution.isRunning) return;
+
+            stepForward();
+
+            if (state.execution.stepIndex < 9) {
+                state.execution.timer = setTimeout(runNextStepLoop, state.execution.speedMs);
+            } else {
+                pauseExecution();
+            }
+        }
+
+        function resetExecution() {
+            pauseExecution();
+            state.execution.stepIndex = 0;
+            state.cpu.pc = '0x00';
+            state.cpu.ir = 'NOP';
+            state.cpu.cuState = 'IDLE';
+            state.cpu.aluOp = null;
+            state.cpu.aluOp1 = null;
+            state.cpu.aluOp2 = null;
+            state.cpu.aluResult = null;
+            state.ram['0x12'] = null;
+
+            updateRAMDisplay();
+            updateCPUDisplay();
+            resetOperatorHighlights();
+            
+            document.getElementById('monitor-screen-text').innerText = "READY";
+            document.getElementById('monitor-subtext').innerText = "In attesa...";
+            document.getElementById('step-badge').innerText = "Fase: PRONTO";
+            document.getElementById('explanation-text').innerText = "Esecuzione azzerata. Premi Play o Passo per ripartire.";
+            logMessage("Esecuzione azzerata.");
+        }
+
+        function resetAll() {
+            resetExecution();
+            state.selectedProgramKey = null;
+            state.ram['0x00'] = 'NOP';
+            state.ram['0x01'] = 'NOP';
+            state.ram['0x02'] = 'NOP';
+            state.ram['0x03'] = 'NOP';
+            state.ram['0x10'] = 5;
+            state.ram['0x11'] = 3;
+            state.valA = 5;
+            state.valB = 3;
+
+            document.querySelectorAll('.prog-btn').forEach(btn => btn.classList.remove('ring-4', 'ring-indigo-400', 'bg-indigo-50'));
+            document.getElementById('active-program-name').innerText = "Nessun programma";
+            document.getElementById('btn-load-ram').disabled = true;
+            document.getElementById('label-val-A').innerText = "5";
+            document.getElementById('label-val-B').innerText = "3";
+
+            updateRAMDisplay();
+            logMessage("Sistema ripristinato.");
+        }
+
+        // STEP-BY-STEP VON NEUMANN CYCLE (CORRECTED 4-INSTRUCTION FLOW)
+        function stepForward() {
+            const prog = PROGRAMS[state.selectedProgramKey];
+            if (!prog) {
+                document.getElementById('explanation-text').innerHTML = "<span class='text-rose-600 font-bold'>⚠️ Seleziona prima un programma e caricalo in RAM!</span>";
+                return;
+            }
+
+            const step = state.execution.stepIndex;
+
+            switch (step) {
+                case 0:
+                    // FASE 1: FETCH IST 1 (0x00)
+                    state.cpu.ir = state.ram['0x00'];
+                    state.cpu.pc = '0x01'; // PC = indirizzo della PROSSIMA istruzione
+                    state.cpu.cuState = 'FETCH';
+                    updateCPUDisplay();
+                    highlightRAMCell('ram-0x00');
+                    animateBusPath('path-ram-cu', '#8b5cf6');
+                    
+                    document.getElementById('step-badge').innerText = "1. FETCH (Ist. 1 - 0x00)";
+                    document.getElementById('explanation-text').innerHTML = `<strong>1. FETCH:</strong> Il PC valeva <code class="text-purple-700 font-bold">0x00</code>: la CU legge da quell'indirizzo la 1ª istruzione (<code class="text-indigo-700 font-bold">${state.cpu.ir}</code>) e la porta nel registro IR. Subito dopo il PC viene incrementato a <code class="text-purple-700 font-bold">0x01</code>, l'indirizzo della <em>prossima</em> istruzione.`;
+                    logMessage(`[FETCH] PC=0x00: CU preleva Istruzione 1 ("${state.cpu.ir}") da RAM[0x00]. PC -> 0x01.`);
+                    break;
+
+                case 1:
+                    // FASE 2: DECODE & READ DATO A (0x10) -> CPU REG OPERANDO A
+                    state.cpu.cuState = 'READ A';
+                    state.cpu.aluOp1 = state.ram['0x10'];
+                    updateCPUDisplay();
+                    highlightRAMCell('ram-0x10');
+                    animateBusPath('path-ram-alu', '#ec4899');
+
+                    document.getElementById('step-badge').innerText = "2. ESECUZIONE IST 1: CARICA DATO A";
+                    document.getElementById('explanation-text').innerHTML = `<strong>2. LETTURA OPERANDO A:</strong> La CU decodifica l'istruzione e legge il dato A dall'indirizzo <code class="text-pink-600 font-bold">0x10</code> (<strong class="text-slate-900">${state.cpu.aluOp1}</strong>), salvandolo nel <strong>Registro Operando A della CPU</strong>.`;
+                    logMessage(`[READ] CU legge Dato A (${state.cpu.aluOp1}) da RAM[0x10] in CPU Op A.`);
+                    break;
+
+                case 2:
+                    // FASE 3: FETCH IST 2 (0x01) -> RETURN TO INSTRUCTION MEMORY
+                    state.cpu.ir = state.ram['0x01'];
+                    state.cpu.pc = '0x02'; // PC = indirizzo della PROSSIMA istruzione
+                    state.cpu.cuState = 'FETCH';
+                    updateCPUDisplay();
+                    highlightRAMCell('ram-0x01');
+                    animateBusPath('path-ram-cu', '#8b5cf6');
+
+                    document.getElementById('step-badge').innerText = "3. FETCH (Ist. 2 - 0x01)";
+                    document.getElementById('explanation-text').innerHTML = `<strong>3. FETCH (Ritorno alle Istruzioni):</strong> Il PC valeva <code class="text-purple-700 font-bold">0x01</code>: la CU ritorna nell'area istruzioni e preleva la 2ª istruzione (<code class="text-indigo-700 font-bold">${state.cpu.ir}</code>). Il PC passa a <code class="text-purple-700 font-bold">0x02</code>.`;
+                    logMessage(`[FETCH] PC=0x01: Torna in area Istruzioni. CU preleva Istruzione 2 ("${state.cpu.ir}") da RAM[0x01]. PC -> 0x02.`);
+                    break;
+
+                case 3:
+                    // FASE 4: DECODE & READ DATO B (0x11) -> CPU REG OPERANDO B
+                    state.cpu.cuState = 'READ B';
+                    state.cpu.aluOp2 = state.ram['0x11'];
+                    updateCPUDisplay();
+                    highlightRAMCell('ram-0x11');
+                    animateBusPath('path-ram-alu', '#ec4899');
+
+                    document.getElementById('step-badge').innerText = "4. ESECUZIONE IST 2: CARICA DATO B";
+                    document.getElementById('explanation-text').innerHTML = `<strong>4. LETTURA OPERANDO B:</strong> La CU legge il dato B dall'indirizzo <code class="text-pink-600 font-bold">0x11</code> (<strong class="text-slate-900">${state.cpu.aluOp2}</strong>) e lo carica nel <strong>Registro Operando B della CPU</strong>. Entrambi gli operandi sono ora nella CPU!`;
+                    logMessage(`[READ] CU legge Dato B (${state.cpu.aluOp2}) da RAM[0x11] in CPU Op B.`);
+                    break;
+
+                case 4:
+                    // FASE 5: FETCH IST 3 (0x02) -> FETCH CALC INSTRUCTION
+                    state.cpu.ir = state.ram['0x02'];
+                    state.cpu.pc = '0x03'; // PC = indirizzo della PROSSIMA istruzione
+                    state.cpu.cuState = 'FETCH';
+                    updateCPUDisplay();
+                    highlightRAMCell('ram-0x02');
+                    animateBusPath('path-ram-cu', '#8b5cf6');
+
+                    document.getElementById('step-badge').innerText = "5. FETCH (Ist. 3 - 0x02)";
+                    document.getElementById('explanation-text').innerHTML = `<strong>5. FETCH (Istruzione di Calcolo):</strong> Il PC valeva <code class="text-purple-700 font-bold">0x02</code>: la CU preleva la 3ª istruzione (<code class="text-indigo-700 font-bold">${state.cpu.ir}</code>) e il PC passa a <code class="text-purple-700 font-bold">0x03</code>.`;
+                    logMessage(`[FETCH] PC=0x02: CU preleva Istruzione 3 ("${state.cpu.ir}") da RAM[0x02]. PC -> 0x03.`);
+                    break;
+
+                case 5:
+                    // FASE 6: EXECUTE ALU (OPERANDS ALREADY IN CPU)
+                    state.cpu.cuState = 'EXECUTE ALU';
+                    state.cpu.aluResult = prog.compute(state.cpu.aluOp1, state.cpu.aluOp2);
+                    updateCPUDisplay();
+                    highlightOperator(prog.op);
+                    animateBusPath('path-cu-alu', '#f59e0b');
+                    
+                    document.getElementById('box-alu').classList.add('pulse-glow-alu');
+                    setTimeout(() => document.getElementById('box-alu').classList.remove('pulse-glow-alu'), 1000);
+
+                    document.getElementById('step-badge').innerText = "6. CALCOLO NELL'ALU";
+                    document.getElementById('explanation-text').innerHTML = `<strong>6. ESECUZIONE NELL'ALU:</strong> L'ALU esegue l'operazione <strong>${prog.op}</strong> usando gli operandi <strong class="text-slate-900">${state.cpu.aluOp1}</strong> e <strong class="text-slate-900">${state.cpu.aluOp2}</strong> <em>già presenti nella CPU</em>. Risultato = <strong class="text-amber-600 font-mono text-sm">${state.cpu.aluResult}</strong>.`;
+                    logMessage(`[EXECUTE] ALU calcola ${prog.op}(${state.cpu.aluOp1}, ${state.cpu.aluOp2}) -> Risultato = ${state.cpu.aluResult}.`);
+                    break;
+
+                case 6:
+                    // FASE 7: FETCH IST 4 (0x03) -> STORE & OUT
+                    state.cpu.ir = state.ram['0x03'];
+                    state.cpu.pc = '0x04'; // PC = indirizzo della PROSSIMA istruzione
+                    state.cpu.cuState = 'FETCH';
+                    updateCPUDisplay();
+                    highlightRAMCell('ram-0x03');
+                    animateBusPath('path-ram-cu', '#8b5cf6');
+
+                    document.getElementById('step-badge').innerText = "7. FETCH (Ist. 4 - 0x03)";
+                    document.getElementById('explanation-text').innerHTML = `<strong>7. FETCH (Istruzione Output):</strong> Il PC valeva <code class="text-purple-700 font-bold">0x03</code>: la CU preleva la 4ª istruzione (<code class="text-indigo-700 font-bold">${state.cpu.ir}</code>) e il PC passa a <code class="text-purple-700 font-bold">0x04</code> (fine del programma).`;
+                    logMessage(`[FETCH] PC=0x03: CU preleva Istruzione 4 ("${state.cpu.ir}") da RAM[0x03]. PC -> 0x04.`);
+                    break;
+
+                case 7:
+                    // FASE 8: WRITEBACK RAM (0x12) & OUTPUT MONITOR DISPLAY
+                    state.ram['0x12'] = state.cpu.aluResult;
+                    state.cpu.cuState = 'WRITEBACK';
+                    updateRAMDisplay();
+                    updateCPUDisplay();
+                    highlightRAMCell('ram-0x12');
+                    
+                    animateBusPath('path-ram-alu', '#14b8a6');
+                    animateBusPath('path-alu-output', '#14b8a6');
+
+                    document.getElementById('monitor-screen-text').innerText = state.cpu.aluResult;
+                    document.getElementById('monitor-subtext').innerText = `Esito: ${prog.name}`;
+                    document.getElementById('box-output').classList.add('pulse-glow-output');
+                    setTimeout(() => document.getElementById('box-output').classList.remove('pulse-glow-output'), 1000);
+
+                    document.getElementById('step-badge').innerText = "8. WRITEBACK & OUTPUT MONITOR";
+                    document.getElementById('explanation-text').innerHTML = `<strong>8. SCRITTURA E PROIEZIONE:</strong> Il risultato (<code class="text-teal-700 font-bold">${state.cpu.aluResult}</code>) viene salvato nella cella di memoria RAM <code class="text-teal-700 font-bold">0x12</code> e mostrato sul <strong>Monitor</strong>!`;
+                    logMessage(`[WRITEBACK] Salvato ${state.cpu.aluResult} in RAM[0x12] e inviato al Monitor.`);
+                    break;
+
+                case 8:
+                    state.cpu.cuState = 'HALT';
+                    updateCPUDisplay();
+                    document.getElementById('step-badge').innerText = "9. PROGRAMMA COMPLETATO";
+                    document.getElementById('explanation-text').innerHTML = `🎉 <strong>Esecuzione completata!</strong> Abbiamo visto la CU gestire il flusso delle istruzioni e l'ALU applicare gli operatori sui dati presenti in CPU.`;
+                    logMessage(`[HALT] Ciclo di Von Neumann completato.`);
+                    break;
+
+                default:
+                    return;
+            }
+
+            state.execution.stepIndex++;
+        }
+
+        function updateRAMDisplay() {
+            for (let addr in state.ram) {
+                const cell = document.getElementById(`ram-${addr}`);
+                if (cell) {
+                    const valSpan = cell.querySelector('.ram-val');
+                    const val = state.ram[addr];
+                    valSpan.innerText = (val !== null && val !== undefined) ? val : '--';
+                }
+            }
+        }
+
+        function updateCPUDisplay() {
+            document.getElementById('reg-pc').innerText = state.cpu.pc;
+            document.getElementById('reg-ir').innerText = state.cpu.ir;
+            document.getElementById('cu-action-label').innerText = state.cpu.cuState;
+            document.getElementById('cpu-clock-state').innerText = state.cpu.cuState !== 'IDLE' ? 'ACTIVE' : 'IDLE';
+
+            document.getElementById('alu-op1').innerText = state.cpu.aluOp1 !== null ? state.cpu.aluOp1 : '--';
+            document.getElementById('alu-op2').innerText = state.cpu.aluOp2 !== null ? state.cpu.aluOp2 : '--';
+            document.getElementById('alu-result').innerText = state.cpu.aluResult !== null ? state.cpu.aluResult : '--';
+        }
+
+        function highlightRAMCell(id) {
+            document.querySelectorAll('.ram-cell').forEach(c => {
+                c.classList.remove('ring-4', 'ring-indigo-400', 'ring-pink-400', 'ring-teal-400', 'bg-indigo-50', 'bg-pink-50', 'bg-teal-50');
+            });
+            const cell = document.getElementById(id);
+            if (cell) {
+                if (id.startsWith('ram-0x0')) {
+                    cell.classList.add('ring-4', 'ring-indigo-400', 'bg-indigo-50');
+                } else if (id === 'ram-0x12') {
+                    cell.classList.add('ring-4', 'ring-teal-400', 'bg-teal-50');
+                } else {
+                    cell.classList.add('ring-4', 'ring-pink-400', 'bg-pink-50');
+                }
+            }
+        }
+
+        function highlightOperator(op) {
+            resetOperatorHighlights();
+            const opMap = { 'ADD': 'op-add', 'SUB': 'op-sub', 'MUL': 'op-mul', 'MAX': 'op-max', 'EQ': 'op-eq', 'AVG': 'op-avg' };
+            const elemId = opMap[op];
+            if (elemId) {
+                const el = document.getElementById(elemId);
+                if (el) el.className = "px-2.5 py-0.5 text-xs font-black rounded-lg bg-amber-500 text-white scale-125 shadow-md transition";
+            }
+        }
+
+        function resetOperatorHighlights() {
+            ['op-add', 'op-sub', 'op-mul', 'op-max', 'op-eq', 'op-avg'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.className = "px-2 py-0.5 text-[10px] font-black rounded-lg bg-slate-100 text-slate-400 transition";
+            });
+        }
+
+        function logMessage(msg) {
+            const logBox = document.getElementById('output-log');
+            const entry = document.createElement('div');
+            entry.innerText = `> ${msg}`;
+            logBox.appendChild(entry);
+            logBox.scrollTop = logBox.scrollHeight;
+        }
+
+        function updateSVGBusLines() {
+            const ram = document.getElementById('box-ram').getBoundingClientRect();
+            const cpuCU = document.getElementById('box-cu').getBoundingClientRect();
+            const cpuALU = document.getElementById('box-alu').getBoundingClientRect();
+            const input = document.getElementById('box-input').getBoundingClientRect();
+            const output = document.getElementById('box-output').getBoundingClientRect();
+            const container = document.getElementById('bus-svg').getBoundingClientRect();
+
+            function getCenter(rect) {
+                return {
+                    x: rect.left + rect.width / 2 - container.left,
+                    y: rect.top + rect.height / 2 - container.top
+                };
+            }
+
+            const cRam = getCenter(ram);
+            const cCU = getCenter(cpuCU);
+            const cALU = getCenter(cpuALU);
+            const cInput = getCenter(input);
+            const cOutput = getCenter(output);
+
+            document.getElementById('path-input-ram').setAttribute('d', `M ${cInput.x} ${cInput.y} Q ${(cInput.x + cRam.x)/2} ${cInput.y - 40} ${cRam.x - 120} ${cRam.y}`);
+            document.getElementById('path-ram-cu').setAttribute('d', `M ${cRam.x - 50} ${cRam.y} L ${cCU.x} ${cCU.y}`);
+            document.getElementById('path-ram-alu').setAttribute('d', `M ${cRam.x + 50} ${cRam.y} L ${cALU.x} ${cALU.y}`);
+            document.getElementById('path-cu-alu').setAttribute('d', `M ${cCU.x} ${cCU.y} L ${cALU.x} ${cALU.y}`);
+            document.getElementById('path-alu-output').setAttribute('d', `M ${cALU.x} ${cALU.y} Q ${(cALU.x + cOutput.x)/2} ${cOutput.y + 40} ${cOutput.x} ${cOutput.y}`);
+        }
+
+        function animateBusPath(pathId, color = '#0284c7') {
+            const path = document.getElementById(pathId);
+            const particle = document.getElementById('bus-particle');
+            if (!path || !particle) return;
+
+            path.setAttribute('stroke', color);
+            path.classList.add('bus-path-active');
+            
+            const pathLength = path.getTotalLength();
+            let start = null;
+            const duration = 750;
+
+            particle.setAttribute('fill', color);
+            particle.setAttribute('opacity', '1');
+
+            function stepAnim(timestamp) {
+                if (!start) start = timestamp;
+                const progress = (timestamp - start) / duration;
+
+                if (progress < 1) {
+                    const point = path.getPointAtLength(progress * pathLength);
+                    particle.setAttribute('cx', point.x);
+                    particle.setAttribute('cy', point.y);
+                    requestAnimationFrame(stepAnim);
+                } else {
+                    particle.setAttribute('opacity', '0');
+                    path.classList.remove('bus-path-active');
+                    path.setAttribute('stroke', '#cbd5e1');
+                }
+            }
+
+            requestAnimationFrame(stepAnim);
+        }
+    </script>
+</body>
+</html>
